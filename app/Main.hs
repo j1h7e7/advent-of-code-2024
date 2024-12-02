@@ -2,8 +2,9 @@ module Main where
 
 import qualified Day1
 
-solve :: String -> (String -> Integer)
-solve "1" = Day1.solve
+solve :: String -> String -> (String -> Integer)
+solve "1" "1" = Day1.solve
+solve "1" "2" = Day1.solve2
 
 getFileName :: String -> Bool -> String
 getFileName day isTest = "../input/day" ++ day ++ testText ++ ".txt"
@@ -19,8 +20,10 @@ main :: IO ()
 main = do
   putStrLn "Enter day number:"
   day <- getLine
+  putStrLn "Enter part number:"
+  part <- getLine
   putStrLn "Run test?"
   test <- getLine
   putStrLn "Answer is:"
   contents <- readFile (getFileName day (parseBool test))
-  print $ solve day contents
+  print $ solve day part contents

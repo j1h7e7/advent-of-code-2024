@@ -20,3 +20,17 @@ solve inputString =
     columns = transpose (getColumns inputString)
     sortedCols = map sort columns
     diffs = map getDiff (transpose sortedCols)
+
+simScore :: [Integer] -> Integer -> Integer
+simScore array target =
+  target * count
+  where
+    count = toInteger (length (filter (== target) array))
+
+solve2 :: String -> Integer
+solve2 inputString =
+  reduce (\a b -> a + b) 0 scores
+  where
+    columns = transpose (getColumns inputString)
+    (leftList, rightList) = bifurcate columns
+    scores = map (simScore rightList) leftList

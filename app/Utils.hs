@@ -14,3 +14,6 @@ transpose x = (map head x) : transpose (map tail x)
 reduce :: (a -> a -> a) -> a -> [a] -> a
 reduce p v [] = v
 reduce predicate startval array = reduce predicate (predicate startval (head array)) (tail array)
+
+bifurcate :: [a] -> (a, a)
+bifurcate x = ((head x), (head (tail x)))
