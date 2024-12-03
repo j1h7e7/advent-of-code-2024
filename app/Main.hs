@@ -7,6 +7,7 @@ solve :: String -> String -> (String -> Integer)
 solve "1" "1" = Day1.solve
 solve "1" "2" = Day1.solve2
 solve "2" "1" = Day2.solve
+solve "2" "2" = Day2.solve2
 
 getFileName :: String -> Bool -> String
 getFileName day isTest = "../input/day" ++ day ++ testText ++ ".txt"
